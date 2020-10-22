@@ -1,0 +1,8 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Projeto para sistema de gestão escolar. 
+${licensePrefix}Marcos F. Souza de Oliveira ${licensePrefix}
+<#if licenseLast??>
+${licenseLast}
+</#if>
