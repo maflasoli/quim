@@ -27,15 +27,25 @@ public class Conectar {
             System.out.println("Classe não encontrada -> Conectar."+cnfe.getMessage());
         }
         try {
-            conecta = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/quim", "root", "19twostars");
+            conecta = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/quim", "root", "19twostars");
+            System.out.println("Conexão estabelecida");
         } catch (SQLException sqle) {
             System.out.println("Driver não encontrado/funcionando -> Conectar."+sqle.getMessage());
+        }finally{
+            if(conecta !=null){
+                try{
+                    conecta.close();
+                    System.out.println("Conexão terminada");
+                }catch(SQLException e){
+                    System.out.println("Conexão não conseguiu terminar");
+                }
+            }
         }
     }
 
     public void cadAluno(String rgaluno, String nomaluno, String endaluno, String telaluno ,String fotaluno) {
         try {
-            ps = conecta.prepareStatement("INSERT INTO aluno(rgaluno,nomaluno,endaluno,,telaluno,fotaluno) VALUES (" + rgaluno + ",'" + nomaluno + "','" + endaluno + "','"+telaluno+"','" + fotaluno + "')");
+            ps = (PreparedStatement) conecta.prepareStatement("INSERT INTO aluno(rgaluno,nomaluno,endaluno,,telaluno,fotaluno) VALUES (" + rgaluno + ",'" + nomaluno + "','" + endaluno + "','"+telaluno+"','" + fotaluno + "')");
             ps.executeUpdate();
             ps.close();
         } catch (SQLException sqle) {
