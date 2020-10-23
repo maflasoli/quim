@@ -14,7 +14,8 @@
 
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-        <title>JSP Page</title>
+        <title>Cadastro de aluno</title>
+        <link rel="shortcut icon" href="imagens/Icone.png">
     </head>
     <body>
         <div class="container col-lg-6 border border-dark">
@@ -24,7 +25,7 @@
                     <p class="lead">Página responsável pelo cadastro de alunos. Siga as instruções.</p>
                 </div>
             </div>
-            <form>
+            <form action="CadAluno">
                 <div class="row pt-1 pb-5">
                     <div class="col pt-1">
                         <div class="row pt-1">
@@ -32,25 +33,28 @@
                                 <input type="text" class="form-control" placeholder="ID">
                             </div>
                             <div class="col-5 pt-1">
-                                <input type="text" class="form-control" placeholder="RG">
+                                <input type="text" name="txtRgAluno" class="form-control" placeholder="RG">
                             </div>
                         </div>
                         <div class="col-15 pt-1">
-                            <input type="text" class="form-control" placeholder="Nome">
+                            <input type="text" name="txtNomAluno" class="form-control" placeholder="Nome">
                         </div>
                         <div class="col-15 pt-1">
-                            <input type="text" class="form-control" placeholder="Endereço">
+                            <input type="text" name="txtEndAluno" class="form-control" placeholder="Endereço">
                         </div>
                         <div class="col-8 pt-1">
-                            <input type="text" class="form-control" placeholder="Telefone">
+                            <input type="text" name="txtTelAlluno" class="form-control" placeholder="Telefone">
                         </div>
                     </div>
+                    
+                    <!--***Lembrar de como será tratada a imagem***-->
+                    
                     <div class="col pt-1 pl-5">
                         <img src="imagens/AlunoSemfoto.png" class="img-fluid border border-dark" alt="Imagem responsiva" width="200" height="200">
                     </div>
                 </div>
-                <div>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                <div class="pb-2">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
                     <button type="button" class="btn btn-secondary">Cancelar</button>
 
                 </div>
