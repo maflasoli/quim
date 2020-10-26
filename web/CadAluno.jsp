@@ -16,8 +16,10 @@
 
         <title>Cadastro de aluno</title>
         <link rel="shortcut icon" href="imagens/Icone.png">
+        
     </head>
     <body>
+
         <div class="container col-lg-6 border border-dark">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
@@ -30,7 +32,7 @@
                     <div class="col pt-1">
                         <div class="row pt-1">
                             <div class="col-3 pt-1">
-                                <input type="text" class="form-control" placeholder="ID">
+                                <input type="text" name="txtIdAluno" class="form-control" placeholder="ID">
                             </div>
                             <div class="col-5 pt-1">
                                 <input type="text" name="txtRgAluno" class="form-control" placeholder="RG">
@@ -43,12 +45,12 @@
                             <input type="text" name="txtEndAluno" class="form-control" placeholder="Endereço">
                         </div>
                         <div class="col-8 pt-1">
-                            <input type="text" name="txtTelAlluno" class="form-control" placeholder="Telefone">
+                            <input type="text" name="txtTelAluno" class="form-control" placeholder="Telefone">
                         </div>
                     </div>
-                    
+
                     <!--***Lembrar de como será tratada a imagem***-->
-                    
+
                     <div class="col pt-1 pl-5">
                         <img src="imagens/AlunoSemfoto.png" class="img-fluid border border-dark" alt="Imagem responsiva" width="200" height="200">
                     </div>
@@ -56,6 +58,7 @@
                 <div class="pb-2">
                     <button type="submit" class="btn btn-primary">Salvar</button>
                     <button type="button" class="btn btn-secondary">Cancelar</button>
+                    <p><a href="listaAluno">Listar</a></p>
 
                 </div>
             </form>
@@ -64,5 +67,6 @@
         <script src="js/jquery-3.5.1.js" type="text/javascript"></script>
         <script src="js/popper.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
     </body>
 </html>

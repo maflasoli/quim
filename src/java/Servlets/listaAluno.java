@@ -5,8 +5,6 @@
 package Servlets;
 
 import Classes.Aluno;
-import Dados.conectarAluno;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,16 +12,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import Dados.conectarAluno;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
  * @author Administrador
  */
-
-
-
-@WebServlet(name = "CadAluno", urlPatterns = {"/CadAluno"})
-public class CadAluno extends HttpServlet {
+@WebServlet(name = "listaAluno", urlPatterns = {"/listaAluno"})
+public class listaAluno extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,31 +39,52 @@ public class CadAluno extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
+            conectarAluno conecta = new conectarAluno();
             Aluno aluno = new Aluno();
-            conectarAluno conectaaluno= new conectarAluno();
+            int id=0;
             
-            aluno.setRg(request.getParameter("txtRgAluno"));
-            aluno.setNome(request.getParameter("txtNomAluno"));
-            aluno.setEndereco(request.getParameter("txtEndAluno"));
-            aluno.setTelefone(request.getParameter("txtTelAluno"));
-            aluno.setFoto(request.getParameter("txt"));
-           
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CadAluno</title>");            
+            out.println("<title>Servlet listaAluno</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CadAluno at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet listaAluno at " + request.getContextPath() + "</h1>");
             
-            conectaaluno.cadAluno(aluno);
-            
-            out.println(aluno.getRg());
-            out.println(aluno.getNome());
-            out.println(aluno.getEndereco());
-            out.println(aluno.getTelefone());
-            out.println(aluno.getFoto());
-                        
+            ArrayList<Aluno> lista = new ArrayList<Aluno>();
+            lista = (ArrayList<Aluno>) conecta.listarAlunos();
+
+            out.println("<table border=1>");
+            out.println("<thead>");
+            out.println("<tr>");
+            out.println("<th>ID</th>");
+            out.println("<th>RG</th>");
+            out.println("<th>Nome</th>");
+            out.println("<th>Endereço</th>");
+            out.println("<th>Telefone</th>");
+            out.println("<th>Foto</th>");
+            out.println("<th colspan=2>Ações</th>");
+            out.println("</tr>");
+            out.println("</thead>");
+            out.println("<tbody>");
+         for(int i=0; i<lista.size();i++){
+                                     
+                out.println("<tr>");
+
+                    out.println("<td>"+lista.get(i).getId()+"</td>");
+                    out.println("<td>"+lista.get(i).getRg()+"</td>");
+                    out.println("<td>"+lista.get(i).getNome()+"</td>");
+                    out.println("<td>"+lista.get(i).getEndereco()+"</td>");
+                    out.println("<td>"+lista.get(i).getTelefone()+"</td>");
+                    out.println("<td>"+lista.get(i).getFoto()+"</td>");
+
+                    out.println("<td> <a href='"+conecta.excluirAluno(lista.get(i).getId())+"'>Excluir</a></td>");
+                    
+//                    out.println("<td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>");
+                out.println("</tr>");
+        }
+        out.println("</tbody>");
+
             out.println("</body>");
             out.println("</html>");
         }
