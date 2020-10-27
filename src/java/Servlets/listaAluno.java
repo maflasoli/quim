@@ -13,9 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Dados.conectarAluno;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 
 /**
  *
@@ -38,19 +43,19 @@ public class listaAluno extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+
             conectarAluno conecta = new conectarAluno();
             Aluno aluno = new Aluno();
-            int id=0;
-            
+            int id = 0;
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet listaAluno</title>");            
+            out.println("<title>Servlet listaAluno</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet listaAluno at " + request.getContextPath() + "</h1>");
-            
+
             ArrayList<Aluno> lista = new ArrayList<>();
             lista = (ArrayList<Aluno>) conecta.listarAlunos();
 
@@ -67,26 +72,57 @@ public class listaAluno extends HttpServlet {
             out.println("</tr>");
             out.println("</thead>");
             out.println("<tbody>");
-         for(int i=0; i<lista.size();i++){
-            id=lista.get(i).getId();
+            for (int i = 0; i < lista.size(); i++) {
+                id = lista.get(i).getId();
                 out.println("<tr>");
 
-                    out.println("<td>"+lista.get(i).getId()+"</td>");
-                    out.println("<td>"+lista.get(i).getRg()+"</td>");
-                    out.println("<td>"+lista.get(i).getNome()+"</td>");
-                    out.println("<td>"+lista.get(i).getEndereco()+"</td>");
-                    out.println("<td>"+lista.get(i).getTelefone()+"</td>");
-                    out.println("<td>"+lista.get(i).getFoto()+"</td>");
+                out.println("<td>" + lista.get(i).getId() + "</td>");
+                out.println("<td>" + lista.get(i).getRg() + "</td>");
+                out.println("<td>" + lista.get(i).getNome() + "</td>");
+                out.println("<td>" + lista.get(i).getEndereco() + "</td>");
+                out.println("<td>" + lista.get(i).getTelefone() + "</td>");
+                out.println("<td>" + lista.get(i).getFoto() + "</td>");
 
-                    out.println("<td> <a href='#'>Excluir</a></td>");
-                    
+                out.println("<td> <a href='#'>Excluir</a></td>");
+
 //                    out.println("<td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>");
                 out.println("</tr>");
-        }
-        out.println("</tbody>");
+            }
+            out.println("</tbody>");
+            //----------CRIAÇÃO DO ARQUIVO PDF------------------------------------------------------------------------------------
 
-            out.println("</body>");
-            out.println("</html>");
+            // criação do objeto documento
+            Document document = new Document();
+
+            try {
+
+                PdfWriter.getInstance(document, new FileOutputStream("/ListaAluno.pdf"));
+                document.open();
+
+                // adicionando um parágrafo ao documento
+                document.add(new Paragraph("Gerando um PDF usando iText em Java"));
+
+                // adicionando um parágrafo com fonte diferente ao arquivo
+                document.add(new Paragraph("Adicionando outro paragrafo", FontFactory.getFont(FontFactory.COURIER, 12)));
+
+                for (int i = 0; i < lista.size(); i++) {
+                    document.add(new Paragraph(lista.get(i).getId() + "" + lista.get(i).getNome(), FontFactory.getFont(FontFactory.COURIER, 12)));
+                }
+                
+                out.println("<h1>CRIADO O *PDF*</h1>");
+                out.println("<a href='ListaAluno.pdf'>Lista em PDF</a>");
+
+                out.println("</body>");
+                out.println("</html>");
+            } catch (DocumentException de) {
+                System.err.println(de.getMessage());
+            } catch (IOException ioe) {
+                System.err.println(ioe.getMessage());
+            } finally {
+                document.close();
+            }
+
+//----------------------------------------------------------------------------------------------            
         }
     }
 
