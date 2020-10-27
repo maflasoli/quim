@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import Dados.conectarAluno;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
@@ -101,7 +103,16 @@ public class listaAluno extends HttpServlet {
 
                 // adicionando um parágrafo ao documento
                 document.add(new Paragraph("Gerando um PDF usando iText em Java"));
-
+                
+                //adicionando uma imagem no PDF.
+                Image imagemPDF = Image.getInstance("C:\\Marcos\\projeto\\QUIM\\build\\web\\imagens\\Icone.png");
+                imagemPDF.setAlignment(Element.ALIGN_CENTER);
+                
+                //tamanho da imagem.
+                imagemPDF.scaleToFit(100, 100);
+                document.add(imagemPDF);
+                
+                
                 // adicionando um parágrafo com fonte diferente ao arquivo
                 document.add(new Paragraph("Adicionando outro paragrafo", FontFactory.getFont(FontFactory.COURIER, 12)));
 
