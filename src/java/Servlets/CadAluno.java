@@ -1,12 +1,14 @@
 /*
  * Projeto para sistema de gest�o escolar. 
  * Marcos F. Souza de Oliveira  * 
+ *
+ *SERVLET PARA O CADASTRO DO ALUNO.
+ *
  */
 package Servlets;
 
 import Classes.Aluno;
 import Dados.conectarAluno;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -59,11 +61,13 @@ public class CadAluno extends HttpServlet {
             
             conectaaluno.cadAluno(aluno);
             
-            out.println(aluno.getRg());
-            out.println(aluno.getNome());
-            out.println(aluno.getEndereco());
-            out.println(aluno.getTelefone());
+            out.println(aluno.getRg()+"<br>");
+            out.println(aluno.getNome()+"<br>");
+            out.println(aluno.getEndereco()+"<br>");
+            out.println(aluno.getTelefone()+"<br>");
             out.println(aluno.getFoto());
+            
+            out.println("<a href='listaAluno'> Listar </a>");
                         
             out.println("</body>");
             out.println("</html>");

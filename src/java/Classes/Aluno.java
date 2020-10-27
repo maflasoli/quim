@@ -1,6 +1,9 @@
 /*
  * Projeto para sistema de gest�o escolar. 
  * Marcos F. Souza de Oliveira  * 
+ *
+ *CLASSE COM ATRIBUTOS DOS ALUNOS.
+ *
  */
 package Classes;
 
@@ -75,18 +78,4 @@ public class Aluno {
     public void setFoto(String foto) {
         this.foto = foto;
     }
-    
-    public void salvar(){
-        Conectar conecta = new Conectar();
-//        conecta.cadAluno(rg, nome, endereco, telefone, foto);
-    }
-    public ArrayList<Aluno> listar(){
-        
-        ArrayList lista=new ArrayList();
-        
-        //TODO implementação da função encarregada de listar os alunos cadastrados.
-        
-        return lista;
-    }
-    
 }

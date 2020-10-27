@@ -51,7 +51,7 @@ public class listaAluno extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet listaAluno at " + request.getContextPath() + "</h1>");
             
-            ArrayList<Aluno> lista = new ArrayList<Aluno>();
+            ArrayList<Aluno> lista = new ArrayList<>();
             lista = (ArrayList<Aluno>) conecta.listarAlunos();
 
             out.println("<table border=1>");
@@ -68,7 +68,7 @@ public class listaAluno extends HttpServlet {
             out.println("</thead>");
             out.println("<tbody>");
          for(int i=0; i<lista.size();i++){
-                                     
+            id=lista.get(i).getId();
                 out.println("<tr>");
 
                     out.println("<td>"+lista.get(i).getId()+"</td>");
@@ -78,7 +78,7 @@ public class listaAluno extends HttpServlet {
                     out.println("<td>"+lista.get(i).getTelefone()+"</td>");
                     out.println("<td>"+lista.get(i).getFoto()+"</td>");
 
-                    out.println("<td> <a href='"+conecta.excluirAluno(lista.get(i).getId())+"'>Excluir</a></td>");
+                    out.println("<td> <a href='#'>Excluir</a></td>");
                     
 //                    out.println("<td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>");
                 out.println("</tr>");
