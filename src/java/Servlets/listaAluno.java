@@ -61,7 +61,7 @@ public class listaAluno extends HttpServlet {
             ArrayList<Aluno> lista = new ArrayList<>();
             lista = (ArrayList<Aluno>) conecta.listarAlunos();
 
-            out.println("<table border=1>");
+            out.println("<table border=1 id='tabelaAlunos'>");
             out.println("<thead>");
             out.println("<tr>");
             out.println("<th>ID</th>");
@@ -90,6 +90,11 @@ public class listaAluno extends HttpServlet {
 //                    out.println("<td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>");
                 out.println("</tr>");
             }
+            
+            //CHAMAR O MEU JAVASCRIPT PARA 
+            
+            out.println("<script src='js/funcoesJS.js' type='text/javascript'></script>");
+            
             out.println("</tbody>");
             //----------CRIAÇÃO DO ARQUIVO PDF------------------------------------------------------------------------------------
 
@@ -119,7 +124,8 @@ public class listaAluno extends HttpServlet {
                 for (int i = 0; i < lista.size(); i++) {
                     document.add(new Paragraph(lista.get(i).getId() + "" + lista.get(i).getNome(), FontFactory.getFont(FontFactory.COURIER, 12)));
                 }
-                
+                out.println("<h1>DUPLO CLIQUE FUNCIONANDO.</h1>");
+
                 out.println("<h1>CRIADO O *PDF*</h1>");
                 out.println("<a href='ListaAluno.pdf'>Lista em PDF</a>");
 
