@@ -16,7 +16,7 @@
 
         <title>Cadastro de aluno</title>
         <link rel="shortcut icon" href="imagens/Icone.png">
-        
+
     </head>
     <body>
 
@@ -57,6 +57,15 @@
                 </div>
                 <div class="pb-2">
                     <button type="submit" class="btn btn-primary">Salvar</button>
+
+                    //TODO verificar se realmente foi feito o cadastro e mostrar mensagem 
+<!--                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Oloco, meu!</strong> Olha esse alerta animado, como é chique!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>-->
+
                     <button type="button" class="btn btn-secondary">Cancelar</button>
                     <p><a href="listaAluno">Listar</a></p>
 

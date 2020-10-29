@@ -53,57 +53,70 @@ public class listaAluno extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            
+            out.println("<link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'/>");
+            
             out.println("<title>Servlet listaAluno</title>");
+            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet listaAluno at " + request.getContextPath() + "</h1>");
+            
+            out.println("<div class='container col-lg-10 border border-dark'>");
+            
+                out.println("<div class='jumbotron jumbotron-fluid'>");
+                out.println("<div class='container'>");
+                out.println("<h1 class='display-4'>Lista de alunos</h1>");
+                out.println("<p class='lead'>Lista contendo os alunos matriculados. Para editar, use duplo clique sobre o registro do aluno.</p>");
+                out.println("</div>");
+                out.println("</div>");
 
-            ArrayList<Aluno> lista = new ArrayList<>();
-            lista = (ArrayList<Aluno>) conecta.listarAlunos();
+                ArrayList<Aluno> lista = new ArrayList<>();
+                lista = (ArrayList<Aluno>) conecta.listarAlunos();
 
-            out.println("<table border=1 id='tabelaAlunos'>");
-            out.println("<thead>");
-            out.println("<tr>");
-            out.println("<th>ID</th>");
-            out.println("<th>RG</th>");
-            out.println("<th>Nome</th>");
-            out.println("<th>Endereço</th>");
-            out.println("<th>Telefone</th>");
-            out.println("<th>Foto</th>");
-            out.println("<th colspan=2>Ações</th>");
-            out.println("</tr>");
-            out.println("</thead>");
-            out.println("<tbody>");
-            for (int i = 0; i < lista.size(); i++) {
-                id = lista.get(i).getId();
+                out.println("<table style='box-shadow: 0 5px 30px darkgrey' class='table table-hover' id='tabelaAlunos'>");
+                out.println("<thead>");
                 out.println("<tr>");
-
-                out.println("<td>" + lista.get(i).getId() + "</td>");
-                out.println("<td>" + lista.get(i).getRg() + "</td>");
-                out.println("<td>" + lista.get(i).getNome() + "</td>");
-                out.println("<td>" + lista.get(i).getEndereco() + "</td>");
-                out.println("<td>" + lista.get(i).getTelefone() + "</td>");
-                out.println("<td>" + lista.get(i).getFoto() + "</td>");
-
-                out.println("<td> <a href='#'>Excluir</a></td>");
-
-//                    out.println("<td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>");
+                out.println("<th>ID</th>");
+                out.println("<th>RG</th>");
+                out.println("<th>Nome</th>");
+                out.println("<th>Endereço</th>");
+                out.println("<th>Telefone</th>");
+                out.println("<th>Foto</th>");
+                out.println("<th colspan=2 style='background-color:rgb(220, 220, 220)'>Ações</th>");
                 out.println("</tr>");
-            }
-            
-            //CHAMAR O MEU JAVASCRIPT PARA 
-            
-            out.println("<script src='js/funcoesJS.js' type='text/javascript'></script>");
-            
+                out.println("</thead>");
+                out.println("<tbody>");
+                for (int i = 0; i < lista.size(); i++) {
+                    id = lista.get(i).getId();
+                    out.println("<tr>");
+
+                    out.println("<td>" + lista.get(i).getId() + "</td>");
+                    out.println("<td>" + lista.get(i).getRg() + "</td>");
+                    out.println("<td>" + lista.get(i).getNome() + "</td>");
+                    out.println("<td>" + lista.get(i).getEndereco() + "</td>");
+                    out.println("<td>" + lista.get(i).getTelefone() + "</td>");
+                    out.println("<td>" + lista.get(i).getFoto() + "</td>");
+
+                    out.println("<td style='background-color:rgb(220, 220, 220)'> <a href='#'>Excluir</a></td>");
+                    out.println("<td style='background-color:rgb(220, 220, 220)'> <a href='#'>Visualizar</a></td>");
+
+
+    //                    out.println("<td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>");
+                    out.println("</tr>");
+                }
+
+                //CHAMAR O MEU JAVASCRIPT PARA 
+            out.println("</div>");
+           
             out.println("</tbody>");
-            //----------CRIAÇÃO DO ARQUIVO PDF------------------------------------------------------------------------------------
+//----------CRIAÇÃO DO ARQUIVO PDF------------------------------------------------------------------------------------
 
             // criação do objeto documento
             Document document = new Document();
 
             try {
 
-                PdfWriter.getInstance(document, new FileOutputStream("/ListaAluno.pdf"));
+                PdfWriter.getInstance(document, new FileOutputStream("ListaAluno.pdf"));
                 document.open();
 
                 // adicionando um parágrafo ao documento
@@ -124,10 +137,11 @@ public class listaAluno extends HttpServlet {
                 for (int i = 0; i < lista.size(); i++) {
                     document.add(new Paragraph(lista.get(i).getId() + "" + lista.get(i).getNome(), FontFactory.getFont(FontFactory.COURIER, 12)));
                 }
-                out.println("<h1>DUPLO CLIQUE FUNCIONANDO.</h1>");
 
-                out.println("<h1>CRIADO O *PDF*</h1>");
                 out.println("<a href='ListaAluno.pdf'>Lista em PDF</a>");
+                
+                
+                out.println("<script src='js/funcoesJS.js' type='text/javascript'></script>");
 
                 out.println("</body>");
                 out.println("</html>");
