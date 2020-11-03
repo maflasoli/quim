@@ -28,7 +28,7 @@ public class conectarAluno {
         conexao = Conectar.conectar();
     }
 
-    //CLASSE/FUNÇÃO RESPONSÁVEL PELO CADASTRO(INSERÇÃO) DO ALUNO.
+    //CLASSE-FUNÇÃO RESPONSÁVEL PELO CADASTRO(INSERÇÃO) DO ALUNO.
     public void cadAluno(Aluno aluno) {
         try {
             PreparedStatement ps = conexao.prepareStatement("insert into aluno(rgaluno,nomaluno,endaluno,telaluno,fotaluno) values('" + aluno.getRg() + "','" + aluno.getNome() + "','" + aluno.getEndereco() + "','" + aluno.getTelefone() + "','" + aluno.getFoto() + "');");
@@ -38,7 +38,7 @@ public class conectarAluno {
         }
     }
 
-    //CLASSE/FUNÇÃO RESPONSÁVEL PELA EXCLUSÃO DO ALUNO
+    //CLASSE-FUNÇÃO RESPONSÁVEL PELA EXCLUSÃO DO ALUNO
     public void excluirAluno(int idAluno) {
         try {
             PreparedStatement pS = conexao.prepareStatement("delete from aluno where userid=" + idAluno);
@@ -48,7 +48,7 @@ public class conectarAluno {
         }
     }
 
-    //CLASSE/FUNÇÃO RESPONSÁVEL POR LISTAR TODOS OS ALUNOS.
+    //CLASSE-FUNÇÃO RESPONSÁVEL POR LISTAR TODOS OS ALUNOS.
     public List<Aluno> listarAlunos() {
         ArrayList<Aluno> listaDeAluno = new ArrayList<>();
         try {
@@ -70,7 +70,7 @@ public class conectarAluno {
         return listaDeAluno;
     }
 
-    //CLASSE/FUNÇÃO RESPONSÁVEL EM EXIBIR O ALUNO A PARTIR DO ID.
+    //CLASSE-FUNÇÃO RESPONSÁVEL EM EXIBIR O ALUNO A PARTIR DO ID.
     public List<Aluno> exibeAluno(int id) {
         ArrayList<Aluno> listaAluno = new ArrayList<>();
         try {
