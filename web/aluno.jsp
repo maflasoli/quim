@@ -30,23 +30,11 @@
             <form action="CadAluno">
                 <div class="row pt-1 pb-5">
                     <div class="col pt-1">
-                        <div class="row pt-1">
-                            <div class="col-3 pt-1">
-                                <input type="text" name="txtIdAluno" class="form-control" placeholder="ID">
-                            </div>
-                            <div class="col-5 pt-1">
-                                <input type="text" name="txtRgAluno" class="form-control" placeholder="RG">
-                            </div>
-                        </div>
-                        <div class="col-15 pt-1">
-                            <input type="text" name="txtNomAluno" class="form-control" placeholder="Nome">
-                        </div>
-                        <div class="col-15 pt-1">
-                            <input type="text" name="txtEndAluno" class="form-control" placeholder="Endereço">
-                        </div>
-                        <div class="col-8 pt-1">
-                            <input type="text" name="txtTelAluno" class="form-control" placeholder="Telefone">
-                        </div>
+                        <input type="text" name="txtIdAluno" class="form-control" placeholder="ID">
+                        <input type="text" name="txtRgAluno" class="form-control" placeholder="RG">
+                        <input type="text" name="txtNomAluno" class="form-control" placeholder="Nome">
+                        <input type="text" name="txtEndAluno" class="form-control" placeholder="Endereço">
+                        <input type="text" name="txtTelAluno" class="form-control" placeholder="Telefone">
                     </div>
 
                     <!--***Lembrar de como será tratada a imagem***-->
@@ -59,12 +47,12 @@
                     <button type="submit" class="btn btn-primary">Salvar</button>
 
                     //TODO verificar se realmente foi feito o cadastro e mostrar mensagem 
-<!--                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Oloco, meu!</strong> Olha esse alerta animado, como é chique!
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>-->
+                    <!--                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                            <strong>Oloco, meu!</strong> Olha esse alerta animado, como é chique!
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>-->
 
                     <button type="button" class="btn btn-secondary">Cancelar</button>
                     <p><a href="listaAluno">Listar</a></p>
