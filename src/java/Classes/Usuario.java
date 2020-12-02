@@ -17,9 +17,27 @@ public class Usuario {
     
     private int id;
     private String datacadastro;
+    private String responsavel;
     private String nome;
+    private String senha;
     private int nivel;
     private String tipo;
+
+    public String getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
     
     public Usuario(){
     
